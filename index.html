@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="static/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="static/img/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="static/img/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="static/img/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="static/img/favicon-16x16.png"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js"
+      integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj+KsslFkCOt3TvJrX2AV/Gc3wOqA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"
+      integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"
+      integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <title>Home</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-background">
+          <a class="navbar-brand dhoom-orange" href="/">For The Dhoomies</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav"></div>
+          </div>
+        </nav>
+        <main class="container p-5">
+          <h1 class="dhoom-orange">For The Dhoomies</h1>
+          <form
+            action="/upload"
+            method="POST"
+            enctype="multipart/form-data"
+            id="nameFileForm"
+            name="nameFileForm"
+            class="customForm"
+          >
+            <input
+              type="button"
+              name="removeTeammate"
+              id="removeTeammate"
+              value="Remove Player"
+              onclick="remove()"
+              class="btn btn-outline-danger btns"
+            />
+            <input
+              type="button"
+              name="addTeammate"
+              id="addTeammate"
+              value="Add Player"
+              onclick="add()"
+              class="btn btn-outline-success btns"
+            />
+            <div class="form-group" id="formfield"></div>
+
+            <input
+              class="form-control fileThing"
+              type="file"
+              name="file[]"
+              multiple
+            />
+            <input
+              class="btn btn-primary submitBtn"
+              type="submit"
+              value="Submit"
+            />
+          </form>
+          
+        </main>
+      </div>
+      <footer class="small text-center text-muted">
+        <ul>
+          <li>Akhil Deshpande</li>
+          <li>Texas Dhoom 2024</li>
+        </ul>
+      </footer>
+    </div>
+  </body>
+  <script src="static/js/scripts.js"></script>
+</html>
