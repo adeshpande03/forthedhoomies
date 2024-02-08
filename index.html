@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link rel="stylesheet" href="static/css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
-      integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
     <link rel="icon" href="static/img/favicon.ico" />
     <link
       rel="apple-touch-icon"
@@ -32,27 +19,109 @@
       sizes="16x16"
       href="static/img/favicon-16x16.png"
     />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js"
-      integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj+KsslFkCOt3TvJrX2AV/Gc3wOqA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"
-      integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"
-      integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <title>Home</title>
+    <title>For the Dhoomies</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+    />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="static/css/style.css" rel="stylesheet" />
   </head>
   <body>
+    <div class="wrapper">
+      <div class="content">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-background">
+          <a class="navbar-brand dhoom-orange" href="/">For The Dhoomies</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup"></div>
+        </nav>
+
+        <main class="container p-5">
+          <h1 class="dhoom-orange">For The Dhoomies</h1>
+          <div id="step-1">
+            <input
+              type="button"
+              name="removeTeammate"
+              id="removeTeammate"
+              value="Remove Player"
+              onclick="remove()"
+              class="btn btn-outline-danger btns"
+            />
+            <input
+              type="button"
+              name="addTeammate"
+              id="addTeammate"
+              value="Add Player"
+              onclick="add()"
+              class="btn btn-outline-success btns"
+            />
+            <div class="form-group" id="formfield"></div>
+            <input
+              class="form-control fileThing"
+              type="file"
+              name="file[]"
+              multiple
+              onchange="loadImages();"
+              id="imagesInput"
+            />
+            <button
+              id="start-button"
+              type="button"
+              class="btn btn-primary submitBtn"
+              onclick="start(); getPlayers();"
+            >
+              Submit
+            </button>
+            <h1 class="mt-4 step-1-clear" id="yourimagestitle"></h1>
+            <div id="images" class="step-1-clear"></div>
+          </div>
+
+          <div id="step-2" style="display: none">
+            <div class="float-container">
+              <p id="information-text" class="step-2-clear text-danger"></p>
+              <div id="random-image-div" class="float-child-0">
+                <img
+                  id="random-image"
+                  class="img-thumbnail random-image"
+                  src=""
+                  alt="Randomly picked image."
+                />
+              </div>
+              <div class="float-child-1" id="scores"></div>
+            </div>
+          </div>
+        </main>
+      </div>
+      <footer class="small text-center text-muted">
+        <ul>
+          <li>Akhil Deshpande</li>
+          <li>Texas Dhoom 2024</li>
+        </ul>
+      </footer>
+    </div>
+    <script src="vendor/jquery/jquery-3.4.1.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/Javascript" src="static/js/scripts.js"></script>
+    <script
+      data-host="https://microanalytics.io"
+      data-dnt="false"
+      src="vendor/microanalytics/script.js"
+      id="ZwSg9rf6GA"
+      async
+      defer
+    ></script>
+  </body>
+  <!-- <body>
     <div class="wrapper">
       <div class="content">
         <nav class="navbar navbar-expand-lg navbar-light navbar-background">
@@ -75,8 +144,8 @@
         <main class="container p-5">
           <h1 class="dhoom-orange">For The Dhoomies</h1>
           <form
-            action="/upload"
-            method="POST"
+            action="/upload.html"
+            method="post"
             enctype="multipart/form-data"
             id="nameFileForm"
             name="nameFileForm"
@@ -112,16 +181,16 @@
               value="Submit"
             />
           </form>
-          
         </main>
       </div>
       <footer class="small text-center text-muted">
         <ul>
           <li>Akhil Deshpande</li>
           <li>Texas Dhoom 2024</li>
+          <li><a href="upload.html">test</a></li>
         </ul>
       </footer>
     </div>
-  </body>
+  </body> -->
   <script src="static/js/scripts.js"></script>
 </html>
