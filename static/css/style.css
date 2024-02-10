@@ -223,3 +223,10 @@ body {
   box-shadow: 0 0 3px var(--secondary) !important;
   background: var(--secondary) !important;
 }
+/* 
+.column-container {
+  max-height: 100vh;
+  column-width: 250px;
+  column-gap: 20px;
+  overflow: auto;
+} */

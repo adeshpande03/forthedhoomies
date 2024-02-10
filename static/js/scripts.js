@@ -12,16 +12,6 @@ function remove() {
   formfield.removeChild(input_tags[input_tags.length - 1]);
 }
 
-window.onload = function () {
-  document.getElementById("randomImage").src =
-    "/get-random-image?" + new Date().getTime();
-};
-
-function showRandomImage() {
-  document.getElementById("randomImage").src =
-    "/get-random-image?" + new Date().getTime();
-}
-
 function modifyScore(index, delta) {
   var scoreSpan = document.getElementById("score" + index);
   var score = parseInt(scoreSpan.innerText) + delta;
@@ -30,7 +20,7 @@ function modifyScore(index, delta) {
 
 let IMAGES = []; // Will put all images in this
 const ROUNDS = 1; // Amount of rounds the carousel will shift trough
-const CAROUSEL_TIME = 5; // Total time in seconds carousel will spin
+const CAROUSEL_TIME = 3; // Total time in seconds carousel will spin
 
 function loadImages() {
   $("#start-button").prop("disabled", false);
@@ -59,7 +49,7 @@ function pickRandomImage() {
   $("#pick-button").prop("disabled", true);
 
   const deleteImage = 1;
-  const directly = 1;
+  const directly = 0;
 
   if (!IMAGES.length) {
     $("#information-text").html("No images left");
@@ -196,8 +186,7 @@ function getPlayers() {
         >
           -
         </button>
-      </div>
-    `;
+      </div>`;
     var newField = document.createElement("div");
     newField.setAttribute("name", e.value);
     newField.setAttribute("class", "score-wrapper");
