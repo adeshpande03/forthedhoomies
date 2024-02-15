@@ -9,6 +9,7 @@ def main():
         file_path = os.path.join(directory_path, filename)
         if os.path.isfile(file_path):
             filenames.append(filename)
+    filenames.sort(key = lambda x: int(x[:-4]))
     with open(json_file_path, 'w') as json_file:
         json.dump(filenames, json_file)
     print(f"Filenames have been saved to {json_file_path}.")
