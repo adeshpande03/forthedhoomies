@@ -1,6 +1,8 @@
 name: Run Python Script
 
-on: [push]
+on: 
+    workflow_dispatch:
+    push:
 
 jobs:
   run-script:
@@ -9,6 +11,10 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        repository: adeshpande03/forthedhoomies
+        token: ${{ secrets.README_PAT }}
+        path: "forthedhoomies"
 
     - name: Set up Python
       uses: actions/setup-python@v2
