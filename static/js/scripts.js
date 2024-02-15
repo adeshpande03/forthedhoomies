@@ -22,26 +22,47 @@ let IMAGES = []; // Will put all images in this
 const ROUNDS = 1; // Amount of rounds the carousel will shift trough
 const CAROUSEL_TIME = 3; // Total time in seconds carousel will spin
 
+// function loadImages() {
+//   $("#start-button").prop("disabled", false);
+//   $("#random-image-div").css("display", "none");
+//   const images = $("#images");
+
+//   for (let file of document.getElementById("imagesInput").files) {
+//     let oFReader = new FileReader();
+//     oFReader.readAsDataURL(file);
+
+//     oFReader.onload = function (oFREvent) {
+//       data = images.html();
+//       $("#images").html(data);
+//       IMAGES.push(oFREvent.target.result);
+//     };
+//   }
+
+//   pa.track({ name: "Load images", value: IMAGES.length });
+// }
+
 function loadImages() {
-  $("#start-button").prop("disabled", false);
+  fetch("filenames.json")
+    .then((response) => response.json()) // Parses the JSON response into a JavaScript object
+    .then((filenames) => {
+      console.log("loadImages called");
 
-  // $("#yourimagestitle").html("Selected images");
-  $("#random-image-div").css("display", "none");
-  const images = $("#images");
+      $("#start-button").prop("disabled", false);
+      $("#random-image-div").css("display", "none");
+      const imagesContainer = $("#images");
+      console.log("Containers should be prepared now");
 
-  for (let file of document.getElementById("imagesInput").files) {
-    let oFReader = new FileReader();
-    oFReader.readAsDataURL(file);
+      const imageFilenames = filenames;
+      const basePath = "./img/";
 
-    oFReader.onload = function (oFREvent) {
-      data = images.html();
-      // data += `<img alt="imagepicker.org carousel image" class="img-thumbnail thumbnail" src="${oFREvent.target.result}">`;
-      $("#images").html(data);
-      IMAGES.push(oFREvent.target.result);
-    };
-  }
+      imagesContainer.html("");
 
-  pa.track({ name: "Load images", value: IMAGES.length });
+      imageFilenames.forEach((filename) => {
+        const imagePath = basePath + filename;
+        console.log("Loading image:", imagePath);
+        IMAGES.push(imagePath);
+      });
+    });
 }
 
 function pickRandomImage() {
@@ -143,17 +164,18 @@ function start() {
 
 function reset() {
   IMAGES = [];
-  var formfield = document.getElementById("step-1");
-  var oldInput = document.getElementById("imagesInput");
-  var newInput = document.createElement("input");
-  newInput.type = "file";
-  newInput.id = oldInput.id;
-  newInput.name = oldInput.name;
-  newInput.className = oldInput.className;
-  newInput.style.cssText = oldInput.style.cssText;
-  newInput.setAttribute("onchange", "loadImages();");
-  newInput.setAttribute("multiple", "true");
-  formfield.replaceChild(newInput, oldInput);
+  loadImages()
+  // var formfield = document.getElementById("step-1");
+  // var oldInput = document.getElementById("imagesInput");
+  // var newInput = document.createElement("input");
+  // newInput.type = "file";
+  // newInput.id = oldInput.id;
+  // newInput.name = oldInput.name;
+  // newInput.className = oldInput.className;
+  // newInput.style.cssText = oldInput.style.cssText;
+  // newInput.setAttribute("onchange", "loadImages();");
+  // newInput.setAttribute("multiple", "true");
+  // formfield.replaceChild(newInput, oldInput);
   $(`#step-1`).each(function () {
     $(this).css("display", "");
   });
@@ -213,3 +235,5 @@ function getPlayers() {
     Reset
   </button>`;
 }
+
+loadImages();
