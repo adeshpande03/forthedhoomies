@@ -164,7 +164,7 @@ function start() {
 
 function reset() {
   IMAGES = [];
-  loadImages()
+  loadImages();
   // var formfield = document.getElementById("step-1");
   // var oldInput = document.getElementById("imagesInput");
   // var newInput = document.createElement("input");
@@ -236,4 +236,4 @@ function getPlayers() {
   </button>`;
 }
 
-loadImages();
+window.onload = loadImages();
