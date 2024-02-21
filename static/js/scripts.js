@@ -18,32 +18,14 @@ function modifyScore(index, delta) {
   scoreSpan.innerText = score.toString();
 }
 
-let IMAGES = []; // Will put all images in this
-const ROUNDS = 1; // Amount of rounds the carousel will shift trough
-const CAROUSEL_TIME = 3; // Total time in seconds carousel will spin
+let IMAGES = [];
+const ROUNDS = 1; 
+const CAROUSEL_TIME = 3;
 
-// function loadImages() {
-//   $("#start-button").prop("disabled", false);
-//   $("#random-image-div").css("display", "none");
-//   const images = $("#images");
-
-//   for (let file of document.getElementById("imagesInput").files) {
-//     let oFReader = new FileReader();
-//     oFReader.readAsDataURL(file);
-
-//     oFReader.onload = function (oFREvent) {
-//       data = images.html();
-//       $("#images").html(data);
-//       IMAGES.push(oFREvent.target.result);
-//     };
-//   }
-
-//   pa.track({ name: "Load images", value: IMAGES.length });
-// }
 
 function loadImages() {
   fetch("filenames.json")
-    .then((response) => response.json()) // Parses the JSON response into a JavaScript object
+    .then((response) => response.json()) 
     .then((filenames) => {
       console.log("loadImages called");
 
@@ -76,7 +58,7 @@ function pickRandomImage() {
     $("#information-text").html("No images left");
     $("#random-image-div").css("display", "none");
   } else {
-    const selected = Math.floor(Math.random() * IMAGES.length); // Pick random image
+    const selected = Math.floor(Math.random() * IMAGES.length); 
     if (directly) {
       setFinalImage(selected, deleteImage);
     } else {
@@ -86,9 +68,8 @@ function pickRandomImage() {
 }
 
 function doCarousel(selected, deleteImage) {
-  // pa.track({ name: "Do Carousel", value: IMAGES.length });
-  const totalCarousel = ROUNDS * IMAGES.length + selected; // Total images that will be shown in carousel
-  const durations = computeDurations(totalCarousel); // Compute a list of durations for each image display in the carousel
+  const totalCarousel = ROUNDS * IMAGES.length + selected; 
+  const durations = computeDurations(totalCarousel); 
   doCarouselRec(0, durations, deleteImage);
 }
 
@@ -165,17 +146,6 @@ function start() {
 function reset() {
   IMAGES = [];
   loadImages();
-  // var formfield = document.getElementById("step-1");
-  // var oldInput = document.getElementById("imagesInput");
-  // var newInput = document.createElement("input");
-  // newInput.type = "file";
-  // newInput.id = oldInput.id;
-  // newInput.name = oldInput.name;
-  // newInput.className = oldInput.className;
-  // newInput.style.cssText = oldInput.style.cssText;
-  // newInput.setAttribute("onchange", "loadImages();");
-  // newInput.setAttribute("multiple", "true");
-  // formfield.replaceChild(newInput, oldInput);
   $(`#step-1`).each(function () {
     $(this).css("display", "");
   });

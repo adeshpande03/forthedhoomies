@@ -1,6 +1,5 @@
 import os
 import json
-#! RUN THIS BEFORE GIT PUSHING
 def main():
     directory_path = './img'
     json_file_path = 'filenames.json'
